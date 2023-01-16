@@ -15,7 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+import django.contrib.auth.urls
+import django_registration.backends.activation.ulrs
+
+import varaus.urls
+
+from .views import etusivu
+
 
 urlpatterns = [
+    path('', etusivu, name = 'etusivu'),
+    path('tilit/', include(django_registration.backends.actination.urls)),
+    path('tilit/', include(django.contrib.auth.urls)),
+    path('varaus/', include(varaus.urls)),
     path('admin/', admin.site.urls),
 ]
